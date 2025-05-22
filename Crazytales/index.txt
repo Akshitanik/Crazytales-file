@@ -1,0 +1,237 @@
+Crazytale - Amazing & Delicious Food
+
+This is a canteen/Restaurant ordering frontend made by Akshita
+
+
+
+#---------- TOP BAR ----------#
+
+<ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+Canteen, XYZ College, Jaipur, India
+
+<ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+Daily : 8.00 am to 10.00 pm
+
+<ion-icon name="call-outline" aria-hidden="true"></ion-icon>
++1 123 456 7890
+
+<ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+booking@canteen.com
+
+
+
+#---------- HEADER ----------#
+
+alt = Crazytale - Home
+
+aria-label = close menu
+<ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+
+Home
+Menus
+About Us
+Our Chefs
+Contact
+
+Visit Us
+
+Canteen, XYZ College, Jaipur, India
+
+Open: 8.00 am to 10.00 pm
+
+booking@crazyTale.com
+
+Booking Request
++88-123-123456
+
+Order Now
+
+aria-label = open menu
+
+
+
+#---------- HERO ----------#
+
+Traditional & Hygenic
+
+For the love of
+delicious food
+
+Come with friends & feel the joy of mouthwatering food
+
+View Our Menu
+
+delightful experience
+
+Flavors Inspired by
+the Seasons
+
+amazing & delicious
+
+Where every flavor
+tells a story
+
+aria-label = slide to previous
+<ion-icon name="chevron-back"></ion-icon>
+
+aria-label = slide to next
+<ion-icon name="chevron-forward"></ion-icon>
+
+alt = booking icon
+
+Order Now
+
+
+
+#---------- SERVICE ----------#
+
+Flavors For You
+
+We Offer Top Notch
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the industrys standard dummy text ever.
+
+alt = Breakfast
+
+Breakfast
+View Menu
+
+Snacks
+
+Beverages
+
+alt = shape
+
+
+#---------- MENU ----------#
+
+Special Selection
+
+Delicious Menu
+
+1.
+alt = Greek Salad
+Greek Salad
+
+Seasonal
+Rs.50
+Tomatoes, green bell pepper, sliced cucumber onion, olives, and feta cheese.
+
+2.
+alt = Lasagne
+Lasagne
+
+Rs.90
+Vegetables, cheeses, tomato sauce, seasonings and spices
+
+3.
+alt = Momos
+Momos
+
+Rs.70
+Typesetting industry lorem Lorem Ipsum is simply dummy text of the priand.
+
+4.
+alt = Paneer Tikka
+Paneer Tikka
+
+New
+Rs.90
+Vegetables, Paneer cheeses, tomato sauce, seasonings and spices.
+
+5.
+alt = Pakoda
+Pakoda
+
+Rs.40
+stuffed vegetables potato, cucumber, green chilli, green bell pepper, onion ,seasonings, spices, tomato sauce
+
+6.
+alt = Crispy Stuffed Samosa
+Crispy Stuffed Samosa
+
+Rs.50
+Vegetables, seasonings, spices, tomato sauce.
+
+7.
+alt=Dosa
+Dosa
+
+Rs.50
+Vegetables, seasonings, spices, coconut chutney,crispy rava dosa
+
+8.
+alt=Pav Bhaji
+Pav Bhaji
+
+Rs.50
+Vegetables, seasonings, spices, Bun(Pav), Chopped onion, lemon
+
+During winter daily from 8:00 am to 10:00 pm
+
+View More
+
+
+
+
+#---------- FEATURES ----------#
+
+Why Choose Us
+
+Our Strength
+
+alt = icon
+
+Hygienic Food
+Lorem Ipsum is simply dummy printing and typesetting.
+
+Fresh Environment
+
+Skilled Chefs
+
+Event & Party
+
+
+
+#---------- FOOTER ----------#
+
+alt = CrazyTale home
+
+Canteen, XYZ College, Jaipur, India
+
+booking@CrazyTales.com
+
+Booking Request : +88-123-123456
+
+Open : 08:00 am - 10:00 pm
+
+Get News & Offers
+
+Subscribe us & Get 25% Off.
+
+<ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+
+placeholder = Your email
+
+Subscribe
+
+Home
+Menus
+About Us
+Contact
+
+Facebook
+Instagram
+Twitter
+
+&copy; All Rights Reserved 
+
+
+
+#---------- BACK TO TOP ----------#
+
+aria-label = back to top
+
+<ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+
+
