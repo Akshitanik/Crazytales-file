@@ -950,6 +950,47 @@ body.nav-active { overflow: hidden; }
   #MENU
 \*-----------------------------------*/
 
+/* --- Menu Filter Bar --- */
+.menu-filter-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+.menu-filter-bar input[type="text"],
+.menu-filter-bar select {
+  padding: 10px 14px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  width: 220px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.menu-filter-bar input[type="text"]:focus,
+.menu-filter-bar select:focus {
+  border-color: #ff6600;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
+}
+
+@media (max-width: 600px) {
+  .menu-filter-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-filter-bar input,
+  .menu-filter-bar select {
+    width: 90%;
+  }
+}
+
+
 .menu .section-title { margin-block-end: 40px; }
 
 .menu .grid-list { margin-block-end: 50px; }
@@ -1024,7 +1065,87 @@ body.nav-active { overflow: hidden; }
   right: 0;
 }
 
+.btn-add-to-cart {
+  background-color: #ff6600;       /* Bright orange for visibility */
+  color: #fff;                     /* White text */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  display: inline-block;
+}
 
+.btn-add-to-cart:hover {
+  background-color: #cc5200;       /* Darker orange on hover */
+}
+
+
+
+/* --- Customization Modal Styles --- */
+#customize-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  font-family: 'DM Sans', sans-serif;
+}
+
+#customize-modal h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #333;
+  text-align: center;
+}
+
+#customize-modal label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: 600;
+  color: #222;
+}
+
+#custom-qty,
+#custom-spice {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+#customize-modal button {
+  width: 48%;
+  padding: 10px;
+  margin: 5px 1%;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#customize-modal button:first-of-type {
+  background-color: #ff6600;
+  color: white;
+}
+
+#customize-modal button:last-of-type {
+  background-color: #ccc;
+  color: #333;
+}
 
 
 

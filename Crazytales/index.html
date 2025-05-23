@@ -39,6 +39,88 @@
 
 </head>
 
+
+<!-- Shopping Cart Floating Button -->
+<div id="cart-button" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+">
+  <button onclick="toggleCart()" style="
+    padding: 15px;
+    font-size: 20px;
+    border-radius: 50%;
+    border: none;
+    background-color: #ff6600;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  ">🛒</button>
+</div>
+
+<!-- Shopping Cart Modal -->
+<div id="cart-modal" style="
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 320px;
+  background: white;
+  border: 2px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  z-index: 9999;
+">
+  <h3 style="margin-top: 0;">My Cart</h3>
+  <div id="cart-items"></div>
+  <p><strong>Total: Rs. <span id="cart-total">0</span></strong></p>
+  <button onclick="placeOrder()" style="
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  ">Place Order</button>
+</div>
+
+
+
+
+<!-- Customization Modal -->
+<div id="customize-modal" style="
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  z-index: 10000;
+">
+  <h3 id="modal-item-name">Customize Order</h3>
+  <label>Quantity:
+    <input type="number" id="custom-qty" value="1" min="1" />
+  </label><br><br>
+  <label>Spice Level:
+    <select id="custom-spice">
+      <option value="Mild">Mild</option>
+      <option value="Medium">Medium</option>
+      <option value="Spicy">Spicy</option>
+    </select>
+  </label><br><br>
+  <button onclick="confirmCustomization()">Add to Cart</button>
+  <button onclick="closeCustomizeModal()">Cancel</button>
+</div>
+
+
+
 <body id="top">
 
   <!-- 
@@ -121,6 +203,13 @@
         </a>
 
         <ul class="navbar-list">
+
+        <li class="navbar-item">
+          <a href="my-orders.html" class="navbar-link hover-underline">
+            <div class="separator"></div>
+            <span class="span">My Orders</span>
+          </a>
+        </li>
 
           <li class="navbar-item">
             <a href="#home" class="navbar-link hover-underline active">
@@ -306,6 +395,7 @@
           <img src="./assets/images/hero-icon.png" width="48" height="48" alt="booking icon">
 
           <span class="label-2 text-center span">Order now </span>
+
         </a>
 
       </section>
@@ -412,6 +502,16 @@
 <!-- 
         - #MENU
       -->
+<div class="menu-filter-bar">
+  <input type="text" id="search-bar" placeholder="Search food items...">
+  <select id="filter-type">
+    <option value="all">All</option>
+    <option value="veg">Veg</option>
+    <option value="nonveg">Non-Veg</option>
+  </select>
+</div>
+
+
 
       <section class="section menu" aria-label="menu-label" id="menu">
         <div class="container">
@@ -423,7 +523,7 @@
           <ul class="grid-list">
 
             <li>
-              <div class="menu-card hover:card">
+              <div class="menu-card hover:card" data name="Greek Salad" data-type="nonveg">
 
                 <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
                   <img src="./assets/images/menu-1.png" width="100" height="100" loading="lazy" alt="Greek Salad"
@@ -445,6 +545,11 @@
                   <p class="card-text label-1">
                     Tomatoes, green bell pepper, sliced cucumber onion, olives, and feta cheese.
                   </p>
+                  
+                  <button class="btn-add-to-cart"
+                      data-id="m1"
+                      data-name="Greek Salad"
+                      data-price="50">Add to Cart</button>
 
                 </div>
 
@@ -452,7 +557,7 @@
             </li>
 
             <li>
-              <div class="menu-card hover:card">
+              <div class="menu-card hover:card"data name="Lasagne" data-type="veg">
 
                 <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
                   <img src="./assets/images/menu-2.png" width="100" height="100" loading="lazy" alt="Lasagne"
@@ -472,14 +577,17 @@
                   <p class="card-text label-1">
                     Vegetables, cheeses, tomato sauce, seasonings and spices
                   </p>
-
+                <button class="btn-add-to-cart"
+                      data-id="m2"
+                      data-name="Lasagne"
+                      data-price="90">Add to Cart</button>
                 </div>
 
               </div>
             </li>
 
             <li>
-              <div class="menu-card hover:card">
+              <div class="menu-card hover:card"data name="Momos"data-type="veg">
 
                 <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
                   <img src="./assets/images/menu-3.png" width="100" height="100" loading="lazy" alt="Momos"
@@ -499,14 +607,17 @@
                   <p class="card-text label-1">
                     Typesetting industry lorem Lorem Ipsum is simply dummy text of the priand.
                   </p>
-
+                  <button class="btn-add-to-cart"
+                      data-id="m3"
+                      data-name="Momos"
+                      data-price="70">Add to Cart</button>
                 </div>
 
               </div>
             </li>
 
             <li>
-              <div class="menu-card hover:card">
+              <div class="menu-card hover:card"data name="Paneer Tikka" data-type="veg">
 
                 <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
                   <img src="./assets/images/menu-4.png" width="100" height="100" loading="lazy" alt="Paneer Tikka"
@@ -528,14 +639,17 @@
                   <p class="card-text label-1">
                     Vegetables, Paneer cheeses, tomato sauce, seasonings and spices.
                   </p>
-
+                  <button class="btn-add-to-cart"
+                      data-id="m4"
+                      data-name="Paneer Tikka"
+                      data-price="90">Add to Cart</button>
                 </div>
 
               </div>
             </li>
 
             <li>
-              <div class="menu-card hover:card">
+              <div class="menu-card hover:card"data name="Pakoda"data-type="veg">
 
                 <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
                   <img src="./assets/images/menu-5.png" width="100" height="100" loading="lazy" alt="Pakoda"
@@ -555,14 +669,17 @@
                   <p class="card-text label-1">
                     stuffed vegetables potato, cucumber, green chilli, green bell pepper, onion ,seasonings, spices, tomato sauce 
                   </p>
-
+                <button class="btn-add-to-cart"
+                      data-id="m5"
+                      data-name="Pakoda"
+                      data-price="40">Add to Cart</button>
                 </div>
 
               </div>
             </li>
 
             <li>
-              <div class="menu-card hover:card">
+              <div class="menu-card hover:card"data name="Crispy Stuffed Samosa"data-type="veg">
 
                 <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
                   <img src="./assets/images/menu-6.png" width="100" height="100" loading="lazy" alt="Crispy Stuffed samosa"
@@ -582,14 +699,17 @@
                   <p class="card-text label-1">
                     Vegetables, seasonings, spices, tomato sauce.
                   </p>
-
+                  <button class="btn-add-to-cart"
+                      data-id="m6"
+                      data-name="Crispy Stuffed Samosa"
+                      data-price="50">Add to Cart</button>
                 </div>
 
               </div>
             </li>
 
             <li>
-              <div class="menu-card hover:card">
+              <div class="menu-card hover:card"data name="Dosa"data-type="veg">
 
                 <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
                   <img src="./assets/images/menu-7.jpg" width="100" height="100" loading="lazy" alt="dosa"
@@ -609,14 +729,17 @@
                   <p class="card-text label-1">
                     Vegetables, seasonings, spices, coconut chutney,crispy rava dosa
                   </p>
-
+                  <button class="btn-add-to-cart"
+                      data-id="m7"
+                      data-name="Dosa"
+                      data-price="50">Add to Cart</button>
                 </div>
 
               </div>
             </li>
 
             <li>
-              <div class="menu-card hover:card">
+              <div class="menu-card hover:card"data name="Pav Bhaji"data-type="veg">
 
                 <figure class="card-banner img-holder" style="--width: 100; --height: 100;">
                   <img src="./assets/images/menu-8.jpg" width="100" height="100" loading="lazy" alt="Pav Bhaji"
@@ -636,7 +759,10 @@
                   <p class="card-text label-1">
                     Vegetables, seasonings, spices, Bun(Pav), Chopped onion, lemon
                   </p>
-
+                    <button class="btn-add-to-cart"
+                    data-id="m8"
+                      data-name="Pav Bhaji"
+                      data-price="50">Add to Cart</button>
                 </div>
 
               </div>

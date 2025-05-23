@@ -1,5 +1,6 @@
 'use strict';
 
+let cart = [];
 
 
 /**
@@ -168,3 +169,113 @@ window.addEventListener("mousemove", function (event) {
   }
 
 });
+
+// shopping cart
+function toggleCart() {
+  const modal = document.getElementById('cart-modal');
+  modal.style.display = (modal.style.display === 'none' || modal.style.display === '') ? 'block' : 'none';
+}
+
+
+
+//customisation logic
+let selectedItem = {};
+
+function openCustomizeModal(item) {
+  selectedItem = item;
+  document.getElementById('modal-item-name').textContent = `Customize: ${item.name}`;
+  document.getElementById('custom-qty').value = 1;
+  document.getElementById('custom-spice').value = 'Medium';
+  document.getElementById('customize-modal').style.display = 'block';
+}
+
+function closeCustomizeModal() {
+  document.getElementById('customize-modal').style.display = 'none';
+}
+
+function confirmCustomization() {
+  const qty = parseInt(document.getElementById('custom-qty').value);
+  const spice = document.getElementById('custom-spice').value;
+  const item = {
+    ...selectedItem,
+    qty: qty,
+    spice: spice
+  };
+
+  // Check if already in cart
+  const existing = cart.find(i => i.id === item.id && i.spice === item.spice);
+  if (existing) {
+    existing.qty += qty;
+  } else {
+    cart.push(item);
+  }
+
+  updateCartUI();
+  closeCustomizeModal();
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+    button.addEventListener('click', e => {
+      const btn = e.target;
+      const item = {
+        id: btn.dataset.id,
+        name: btn.dataset.name,
+        price: parseInt(btn.dataset.price)
+      };
+      openCustomizeModal(item);
+    });
+  });
+});
+
+
+//Simulate Order Placement & Save to localStorage
+function placeOrder() {
+  if (cart.length === 0) {
+    alert("Cart is empty!");
+    return;
+  }
+
+  const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
+
+  const order = {
+    id: Date.now(),
+    items: cart,
+    status: "Preparing",
+    total: cart.reduce((sum, i) => sum + i.price * i.qty, 0),
+    timestamp: new Date().toLocaleString()
+  };
+
+  existingOrders.push(order);
+  localStorage.setItem('orders', JSON.stringify(existingOrders));
+
+  alert("Order placed successfully!");
+  cart = [];
+  updateCartUI();
+  toggleCart();
+}
+
+
+
+//JavaScript Logic for Filter
+document.getElementById('search-bar').addEventListener('input', filterMenu);
+document.getElementById('filter-type').addEventListener('change', filterMenu);
+
+function filterMenu() {
+  const search = document.getElementById('search-bar').value.toLowerCase();
+  const type = document.getElementById('filter-type').value;
+  const items = document.querySelectorAll('.menu-card');
+
+  items.forEach(card => {
+    const name = card.dataset.name.toLowerCase();
+    const itemType = card.dataset.type;
+
+    const matchesSearch = name.includes(search);
+    const matchesType = (type === 'all') || (itemType === type);
+
+    card.style.display = (matchesSearch && matchesType) ? 'block' : 'none';
+  });
+}
+
+

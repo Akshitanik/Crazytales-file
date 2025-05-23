@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Orders - Canteen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #f7f7f7;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .order-card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .order-card h3 {
+      margin-top: 0;
+    }
+
+    .order-item {
+      margin-bottom: 5px;
+    }
+
+    .status {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    .timestamp {
+      font-size: 0.85em;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .no-orders {
+      text-align: center;
+      color: #999;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Orders</h1>
+  <div id="orders-list" class="orders-container"></div>
+
+  <script>
+    const ordersList = document.getElementById("orders-list");
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    if (orders.length === 0) {
+      ordersList.innerHTML = "<p class='no-orders'>No orders placed yet.</p>";
+    } else {
+      orders.reverse().forEach(order => {
+        const card = document.createElement("div");
+        card.classList.add("order-card");
+
+        card.innerHTML = `
+          <h3>Order #${order.id}</h3>
+          <div class="timestamp">Placed on: ${order.timestamp}</div>
+          <div>
+            ${order.items.map(item => `
+              <div class="order-item">
+                ${item.name} x ${item.qty} (${item.spice})
+              </div>
+            `).join("")}
+          </div>
+          <p><strong>Total:</strong> Rs. ${order.total}</p>
+          <p>Status: <span class="status">${order.status}</span></p>
+        `;
+
+        ordersList.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>
